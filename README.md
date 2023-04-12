@@ -12,7 +12,7 @@ Resumo
 
 Estrutura de Dados Utilizadas
 
-Listas
+	Listas
 
 Lista Estatística Encadeada (LEE);
 Lista Estática Duplamente Encadeada (LEDE);
@@ -20,13 +20,13 @@ Lista Dinâmica Encadeada (LDE);
 Lista Dinâmica Duplamente Encadeada (LDDE);
 Implementação da String Dinâmica.
 
-Pilha
+	Pilha
 
 Pilha Estática (PE);
 Pilha Dinâmica (PD);
 Pilha Múltipla Estática (PME).
 
-Fila
+	Fila
 
 Fila Estática (FE);
 Fila Dinâmica (FD); 
@@ -37,21 +37,21 @@ Fila de Prioridade Dinâmica (FPD);
 Deck (D);
 Simulação Genérica.
 
-Hashing 
+	Hashing 
 
 Hashing (com lista estática e tratamento de colisão) (HLE);
 Hashing (com lista dinâmica e tratamento de colisão) (HLD).
 
-Lista Cruzada
+	Lista Cruzada
 	
 Lista Cruzada (LC).
 
 
-Matriz Esparsa
+	Matriz Esparsa
 
 Matriz Esparsa (ME).
 
-Árvore 
+	Árvore 
 
 Árvore Binária (AB);
 Árvore Binária de Busca (ABB);
@@ -77,7 +77,7 @@ Ordenação (void);
 Cheia, para listas do tipo estática (bool);
 Vazia, para listas do tipo estática (bool);
 
-Pilha
+	Pilha
 
 Inicialização (void);
 Push (bool);
@@ -87,7 +87,7 @@ Impressão (void);
 Cheia, para listas do tipo estática (bool);
 Vazia, para listas do tipo estática (bool);
 
-Fila
+	Fila
 
 Inicialização (void);
 Inserção (bool);
@@ -97,7 +97,7 @@ Impressão (void);
 Cheia, para listas do tipo estática (bool);
 Vazia, para listas do tipo estática (bool);
 
-Hashing 
+	Hashing 
 
 Inicialização (void);
 Inserção (bool);
@@ -105,7 +105,7 @@ Remoção (bool);
 Busca (bool);
 Impressão (void);
 
-Lista Cruzada
+	Lista Cruzada
 	
 Inicialização (void);
 Inserção  (bool);
@@ -114,7 +114,7 @@ Busca (bool);
 Impressão (void);
 
 
-Matriz Esparsa
+	Matriz Esparsa
 
 Inicialização (void);
 Inserção (bool);
@@ -122,7 +122,7 @@ Remoção (bool);
 Busca (bool);
 Impressão (void);
 
-Árvore 
+	Árvore 
 
 Inicialização (void);
 Inserção (bool);
