@@ -2,7 +2,7 @@
 Biblioteca em C para auxiliar no estudo de Estrutura de Dados
 
 
-##Resumo
+## Resumo
 
 	Será implementado uma biblioteca em C para o auxílio dos alunos interessados na disciplina de Estrutura de Dados utilizando a linguagem C, dessa forma será possível ver o código sendo executado na prática além no caso de possível dúvida é fazível entrar dentro da biblioteca e ver como o código foi implementado, verificando sua lógica passo a passo, de modo que seguro e rápido.
 	Serão feitos 23 tipos de estrutura de dados, classificados em 7 tipos (Lista, Pilha, Fila, Hashing, Lista Cruzada, Matriz Esparsa e Árvore), além de implementação de String Dinâmica em todas as listas e uma simulação genérica em todos os tipos de Fila. Ao todo serão implementados em torno de 169 funções dos mais diversos tipos, fora a implementação de cada estrutura em si. 
@@ -135,7 +135,7 @@ Matriz Esparsa
 
 
 
-##Declaração
+## Declaração
 
 	O chamamento da função e sua declaração aparecerá assim em um em uma main como em :
 
@@ -148,7 +148,7 @@ Matriz Esparsa
 
 
 
-##Bibliotecas Auxiliares
+## Bibliotecas Auxiliares
 
 	
 	stdio.h
