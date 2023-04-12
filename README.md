@@ -12,52 +12,52 @@ Resumo
 
 Estrutura de Dados Utilizadas
 
-	Listas
+Listas
 
-Lista Estatística Encadeada (LEE);
-Lista Estática Duplamente Encadeada (LEDE);
-Lista Dinâmica Encadeada (LDE);
-Lista Dinâmica Duplamente Encadeada (LDDE);
-Implementação da String Dinâmica.
+	Lista Estatística Encadeada (LEE);
+	Lista Estática Duplamente Encadeada (LEDE);
+	Lista Dinâmica Encadeada (LDE);
+	Lista Dinâmica Duplamente Encadeada (LDDE);
+	Implementação da String Dinâmica.
 
-	Pilha
+Pilha
 
-Pilha Estática (PE);
-Pilha Dinâmica (PD);
-Pilha Múltipla Estática (PME).
+	Pilha Estática (PE);
+	Pilha Dinâmica (PD);
+	Pilha Múltipla Estática (PME).
 
-	Fila
+Fila
 
-Fila Estática (FE);
-Fila Dinâmica (FD); 
-Fila Circular (FC);
-Fila Múltipla (FM);
-Fila de Prioridade Estática (FPE);
-Fila de Prioridade Dinâmica (FPD);
-Deck (D);
-Simulação Genérica.
+	Fila Estática (FE);
+	Fila Dinâmica (FD); 
+	Fila Circular (FC);
+	Fila Múltipla (FM);
+	Fila de Prioridade Estática (FPE);
+	Fila de Prioridade Dinâmica (FPD);
+	Deck (D);
+	Simulação Genérica.
 
-	Hashing 
+Hashing 
 
-Hashing (com lista estática e tratamento de colisão) (HLE);
-Hashing (com lista dinâmica e tratamento de colisão) (HLD).
+	Hashing (com lista estática e tratamento de colisão) (HLE);
+	Hashing (com lista dinâmica e tratamento de colisão) (HLD).
 
-	Lista Cruzada
+Lista Cruzada
 	
-Lista Cruzada (LC).
+	Lista Cruzada (LC).
 
 
-	Matriz Esparsa
+Matriz Esparsa
 
-Matriz Esparsa (ME).
+	Matriz Esparsa (ME).
 
-	Árvore 
+Árvore 
 
-Árvore Binária (AB);
-Árvore Binária de Busca (ABB);
-Árvore Estritamente Binária (AEB);
-Árvore AVL (AAVL);
-Árvore Rubro-Negra (ARN);
+	Árvore Binária (AB);
+	Árvore Binária de Busca (ABB);
+	Árvore Estritamente Binária (AEB);
+	Árvore AVL (AAVL);
+	Árvore Rubro-Negra (ARN);
 	
 
 
@@ -65,72 +65,72 @@ Matriz Esparsa (ME).
 
 Funções Aplicadas
 
-	Listas
+Listas
 
-Inicialização (void);
-Inserção simples (bool);
-Inserção ordenada (bool);
-Remoção (bool);
-Busca (bool);
-Impressão (void);
-Ordenação (void);
-Cheia, para listas do tipo estática (bool);
-Vazia, para listas do tipo estática (bool);
+	Inicialização (void);
+	Inserção simples (bool);
+	Inserção ordenada (bool);
+	Remoção (bool);
+	Busca (bool);
+	Impressão (void);
+	Ordenação (void);
+	Cheia, para listas do tipo estática (bool);
+	Vazia, para listas do tipo estática (bool);
 
-	Pilha
+Pilha
 
-Inicialização (void);
-Push (bool);
-Pop (bool);
-Busca (bool);
-Impressão (void);
-Cheia, para listas do tipo estática (bool);
-Vazia, para listas do tipo estática (bool);
+	Inicialização (void);
+	Push (bool);
+	Pop (bool);
+	Busca (bool);
+	Impressão (void);
+	Cheia, para listas do tipo estática (bool);
+	Vazia, para listas do tipo estática (bool);
 
-	Fila
+Fila
 
-Inicialização (void);
-Inserção (bool);
-Remoção (bool);
-Busca (bool);
-Impressão (void);
-Cheia, para listas do tipo estática (bool);
-Vazia, para listas do tipo estática (bool);
+	Inicialização (void);
+	Inserção (bool);
+	Remoção (bool);
+	Busca (bool);
+	Impressão (void);
+	Cheia, para listas do tipo estática (bool);
+	Vazia, para listas do tipo estática (bool);
 
-	Hashing 
+Hashing 
 
-Inicialização (void);
-Inserção (bool);
-Remoção (bool);
-Busca (bool);
-Impressão (void);
+	Inicialização (void);
+	Inserção (bool);
+	Remoção (bool);
+	Busca (bool);
+	Impressão (void);
 
-	Lista Cruzada
+Lista Cruzada
 	
-Inicialização (void);
-Inserção  (bool);
-Remoção (bool);
-Busca (bool);
-Impressão (void);
+	Inicialização (void);
+	Inserção  (bool);
+	Remoção (bool);
+	Busca (bool);
+	Impressão (void);
 
 
-	Matriz Esparsa
+Matriz Esparsa
 
-Inicialização (void);
-Inserção (bool);
-Remoção (bool);
-Busca (bool);
-Impressão (void);
+	Inicialização (void);
+	Inserção (bool);
+	Remoção (bool);
+	Busca (bool);
+	Impressão (void);
 
-	Árvore 
+Árvore 
 
-Inicialização (void);
-Inserção (bool);
-Remoção (bool);
-Busca (bool);
-Impressão (void);
-Cheia, para listas do tipo estática (bool);
-Vazia, para listas do tipo estática (bool);
+	Inicialização (void);
+	Inserção (bool);
+	Remoção (bool);
+	Busca (bool);
+	Impressão (void);
+	Cheia, para listas do tipo estática (bool);
+	Vazia, para listas do tipo estática (bool);
 
 
 
@@ -138,11 +138,11 @@ Vazia, para listas do tipo estática (bool);
 Declaração
 
 	O chamamento da função e sua declaração aparecerá assim em um em uma main como em :
-		
-Nome da Função + Tipo de Dado em Sigla
 
-Exemplo:
-					ImprimirLEE()
+	Nome da Função + Tipo de Dado em Sigla
+
+	Exemplo:
+						ImprimirLEE()
 
 
 
@@ -151,9 +151,9 @@ Exemplo:
 Bibliotecas Auxiliares
 
 	
-stdio.h
-stdbool.h
-string.h
+	stdio.h
+	stdbool.h
+	string.h
 	
 
 
