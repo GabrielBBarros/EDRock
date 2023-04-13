@@ -157,3 +157,25 @@ Matriz Esparsa
 	stdbool.h
 	string.h
 	
+
+## Documentação auxiliar de código
+
+	-Proximo = prox;
+	
+	-Anterior = ant;
+	
+	-Base = base;
+	
+	-Topo = topo;
+	
+	-Auxiliar = aux;
+	
+	-Valor = valor;
+	
+	-Inicio = inicio;
+	
+	-Fim = fim;
+	
+	-No = no/No+Sigla
+	
+	
