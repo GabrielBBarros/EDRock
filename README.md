@@ -78,6 +78,7 @@ Listas
 	Ordenação (void);
 	Cheia, para listas do tipo estática (bool);
 	Vazia, para listas do tipo estática (bool);
+	Tamanho (int);
 
 Pilha
 
@@ -88,6 +89,7 @@ Pilha
 	Impressão (void);
 	Cheia, para listas do tipo estática (bool);
 	Vazia, para listas do tipo estática (bool);
+	Tamanho (int);
 
 Fila
 
@@ -98,6 +100,7 @@ Fila
 	Impressão (void);
 	Cheia, para listas do tipo estática (bool);
 	Vazia, para listas do tipo estática (bool);
+	Tamanho (int);
 
 Hashing 
 
@@ -106,6 +109,7 @@ Hashing
 	Remoção (bool);
 	Busca (bool);
 	Impressão (void);
+	Tamanho (int);
 
 Lista Cruzada
 	
@@ -114,6 +118,7 @@ Lista Cruzada
 	Remoção (bool);
 	Busca (bool);
 	Impressão (void);
+	Tamanho (int);
 
 
 Matriz Esparsa
@@ -123,6 +128,7 @@ Matriz Esparsa
 	Remoção (bool);
 	Busca (bool);
 	Impressão (void);
+	Tamanho (int);
 
 Árvore 
 
@@ -133,6 +139,7 @@ Matriz Esparsa
 	Impressão (void);
 	Cheia, para listas do tipo estática (bool);
 	Vazia, para listas do tipo estática (bool);
+	Tamanho (int);
 
 
 
