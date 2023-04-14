@@ -70,7 +70,7 @@ Matriz Esparsa
 Listas
 
 	Inicialização (void);
-	Inserção simples (bool);
+	Inserção simples (bool) -> (Inserir no inicio) e (Inserir no fim);
 	Inserção ordenada (bool);
 	Remoção (bool);
 	Busca (bool);
