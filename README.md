@@ -183,6 +183,8 @@ Matriz Esparsa
 	
 	-Fim = fim;
 	
-	-No = no/No+Sigla
+	-No = no/No+Sigla;
+	
+	-Disponível = disp;
 	
 	
