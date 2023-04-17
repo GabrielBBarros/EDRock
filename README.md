@@ -73,7 +73,8 @@ Listas
 	Inserção simples (bool) -> (Inserir no inicio) e (Inserir no fim);
 	Inserção ordenada (bool);
 	Remoção (bool);
-	Busca (bool);
+	Busca (int);
+	BuscaValor (double);
 	Impressão (void);
 	Ordenação (void);
 	Cheia, para listas do tipo estática (bool);
