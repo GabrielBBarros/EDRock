@@ -63,8 +63,51 @@ bool PopPD(PD *Pilha, Valor *valor){
     *valor = aux->valor;
     Pilha->topo = aux->prox;
     free(aux);
+    Pilha->tamanho--;
     return true;  
 }
 
+//Impressão
+void ImprimirPD(PD *Pilha){
+    if (Pilha->topo == NULL)
+    {
+        printf("Pilha vazia");
+    }
+    NoPD *aux = Pilha->topo;
+    while (aux !=NULL)
+    {
+        if (aux->valor.INT) {
+            printf("%d ", aux->valor.INT);
+        }
+        else if (aux->valor.FLOAT) {
+            printf("%f ", aux->valor.FLOAT);
+        } 
+        else {
+            printf("%c ", aux->valor.CHAR);
+        }
+        aux = aux->prox;
 
+    } 
+}
+
+//Busca
+int Buscar(PD *Pilha, Valor valor) {
+    int posicao = 0;
+    NoPD *aux = Pilha->topo;
+    while (aux != NULL) {
+        if (aux->valor.INT == valor.INT || aux->valor.FLOAT == valor.FLOAT || aux->valor.CHAR == valor.CHAR) {
+            return true;
+        }
+        aux = aux->prox;
+        posicao++;
+    }
+    return false; // elemento não encontrado
+}
+
+
+
+//Tamanho
+int TamanhoPD(PD *Pilha){
+    return Pilha->tamanho;
+}
 
