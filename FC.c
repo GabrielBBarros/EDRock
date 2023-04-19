@@ -8,17 +8,10 @@
     Ela é um tipo de loop infinito
     quando o inicio chega ao final da fila ela volta a ser o ínicio da fila*/
 
-
-    typedef union valor
-    {
-        int INT;
-        float FLOAT;
-        char CHAR;
-    }Valor;
     
     typedef struct nofc
     {
-        Valor valor;
+        double valor;
         struct nofc *prox;
     }NoFC;
     
@@ -33,11 +26,12 @@
 void InicializarFC(FC *Fila){
     Fila->inicio = NULL;
     Fila->fim = NULL;
+    Fila->tamanho = 0;
 }
 
 
 //Função de inserir
-bool InserirFC(FC *Fila, Valor valor){
+bool InserirFC(FC *Fila, double valor){
     NoFC *novo = (NoFC *)malloc(sizeof(NoFC));
     if (novo == NULL)
     {
@@ -65,106 +59,147 @@ bool InserirFC(FC *Fila, Valor valor){
     return true;
 }
 
-
-//Remoção
-bool RemoverFC(FC *Fila, Valor valor){
+//Função Remoção
+bool RemoverFC(FC *Fila, double valor){
     if (Fila->inicio == NULL)
     {
+        printf("Filaz vazia, impossível fazer operação");
         return false;
     }
-    
     NoFC *aux = Fila->inicio;
-    NoFC *ant = NULL;
-    bool achado = false;
-    
-    while (aux !=Fila->inicio)
+    NoFC *ant = Fila->fim;
+    while (aux != Fila->fim)
     {
-         if (aux->valor.INT == valor.INT || aux->valor.FLOAT == valor.FLOAT || aux->valor.CHAR == valor.CHAR) {
-            achado = true;
-            break;
+        if (aux->valor == valor)
+        {
+            //Remoção do primeiro elemento
+            if (aux == Fila->inicio)
+            {
+                Fila->inicio = aux->prox;
+                Fila->fim->prox = Fila->inicio;
+            }
+            //Remoção de outros elementos
+            else
+            {
+                ant->prox = aux->prox;
+                if (aux == Fila->fim)
+                {
+                    Fila->fim = ant;
+                }
+            }
+            free(aux);
+            Fila->tamanho--;
+            return true;
         }
         ant = aux;
         aux = aux->prox;
     }
-
-    if (achado)
+    //Verifica se o último elemento é o valor a ser removido
+    if (aux->valor == valor)
     {
-         if (Fila->inicio == Fila->fim) {  // Fila com um único elemento
+        //Remoção do último elemento
+        if (Fila->inicio == Fila->fim)
+        {
             Fila->inicio = NULL;
             Fila->fim = NULL;
-        } else if (aux == Fila->inicio) {  // Remoção do primeiro elemento
-            Fila->inicio = Fila->inicio->prox;
-            Fila->fim->prox = Fila->inicio;
-        } else if (aux == Fila->fim) {  // Remoção do último elemento
-            Fila->fim = ant;
-            Fila->fim->prox = Fila->inicio;
-        } else {  // Remoção do elemento do meio
-            ant->prox = aux->prox;
         }
-
+        else
+        {
+            ant->prox = Fila->inicio;
+            Fila->fim = ant;
+        }
         free(aux);
         Fila->tamanho--;
-        return true;  // Elemento encontrado e removido    
+        return true;
     }
-    else
-        {
-            return false;
-        }
-    
+    return false;
 }
+
+
 
 
 //Função Impressão
 void ImprimirFC(FC *Fila){
     if (Fila->inicio == NULL)
     {
-        printf("Fila vazia");
+        printf("Fila vazia\n");
+        return;
     }
     NoFC *aux = Fila->inicio;
-     do {
-            if (aux->valor.INT) {
-                printf("%d ", aux->valor.INT);
-            } else if (aux->valor.FLOAT) {
-                printf("%f ", aux->valor.FLOAT);
-            } else {
-                printf("%c ", aux->valor.CHAR);
-            }
-            aux = aux->prox;
-        } while (aux != Fila->inicio);    
+    printf("\nImprimindo:\n");
+    while (aux != Fila->fim) {
+        printf("%lf \n", aux->valor);
+        aux = aux->prox;
+    }
+    printf("%lf ", aux->valor);
 }
+
 
 
 
 //Função buscar
-bool BuscarFC(FC *Fila, Valor valor){
+double BuscarValorFC(FC *Fila, double valor){
     if (Fila->inicio == NULL)
     {
-        return false;
+        printf("Lista vazia\n");
+        return -1;
     }
     NoFC *aux = Fila->inicio;
-    while (aux != Fila->inicio)
+    while (aux != Fila->fim)
     {
-        if (aux->valor.INT == valor.INT ||
-            aux->valor.FLOAT == valor.FLOAT ||
-            aux->valor.CHAR == valor.CHAR)
+        if (aux->valor == valor)
         {
-            return true;
+            printf("Valor encontrado: %lf\n", valor);
+            return valor;
         }
         aux = aux->prox;   
     }
-    return false;
+    // Verifica se o último elemento da fila é igual ao valor buscado
+    if (Fila->fim->valor == valor)
+    {
+         printf("Valor encontrado: %lf\n", valor);
+        return valor;
+    }
+    printf("\nValor nao encontrado\n");
+    return -1;
 }
 
 
-//Função tamanho
-int TamanhoFC(int tamanho){
-    return tamanho;
+//Função buscar posição
+int BuscarFC(FC Fila, double valor){
+    if (Fila.inicio == NULL)
+    {
+        printf("Não encontrado\n");
+        return -1;
+    }
+    NoFC * aux = Fila.inicio;
+    int i = 0;
+    do {
+        if (aux->valor == valor)
+        {
+            printf("Posicao: %d\n", i);
+            return i;
+        }
+        aux=aux->prox;
+        i++;
+    } while (aux != Fila.inicio);
+    printf("Não encontrado\n");
+    return -1;
 }
 
 
 
 int main(int argc, char const *argv[])
 {
-    /* code */
+    printf("\n\n");
+    FC fila;
+    InicializarFC(&fila);
+    InserirFC(&fila, 1);
+    InserirFC(&fila, 2);
+    //RemoverFC(&fila, 2);
+    BuscarValorFC(&fila, 1);
+    BuscarFC(fila, 2);
+    ImprimirFC(&fila);
+
     return 0;
 }

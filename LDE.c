@@ -1,20 +1,13 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <stdbool.h>
-#include <string.h>
 
-typedef union valor
+typedef struct noLDE
 {
-    int INT;
-    float FLOAT;
-    char CHAR;
-} Valor;
-
-typedef struct nolde
-{
-    Valor valor;
-    struct nolde *prox;
-
+    float valor;
+    struct noLDE *prox;
 }NoLDE;
+
 
 typedef struct lde
 {
@@ -24,180 +17,116 @@ typedef struct lde
 }LDE;
 
 
-
-
-//Inserção no ínicio
-int inserirInicioLDE (LDE *L, Valor valor, int tamanho){
-    
-    //Alocação dinâmica
-    NoLDE *novo = (NoLDE*) malloc(sizeof(NoLDE));
-    //Ver se a alocação está errada
-    if (novo == NULL)
-    {
-        //Erro na alocação
-        return 0;
-    }
-    //Define o valor do novo nó
-    novo->valor = valor;
-    //Define o proximo do novo nó
-    novo->prox = L->inicio;
-        //Verifica se coloca ele no inicio
-        if (L->inicio ==  NULL)
-        {
-            //Insere no inicio e no fim, por ser o primeiro nó
-            L->fim = novo;
-        }
-        //Caso não insere depois do primeiro valor adicionado
-        else{
-            novo->prox = L->inicio;
-        }
-        L->inicio = novo;
-        //Incrementa o tamanho da lista
-        tamanho ++;
-        return 1;
+//Inicializar
+void InicializarLDE(LDE *Lista){
+    Lista->inicio = NULL;
+    Lista->fim = NULL;
+    Lista->tamanho = 0;
 }
 
-
-
-//Inserção no fim
-int inserirFimLDE (LDE *L, Valor valor, int tamanho){
-    
-    //Alocação dinâmica
-    NoLDE *novo = (NoLDE*) malloc(sizeof(NoLDE));
-    //Ver se a alocação está errada
-    if (novo == NULL)
+//Vazio
+bool VaziaLDE(LDE *Lista){
+    if (Lista->inicio == NULL)
     {
-        //Erro na alocação
-        return 0;
+        printf("Esta vazia");
+        return true;
     }
-    //Define o valor do novo nó
-    novo->valor = valor;
-    //Define o proximo do novo nó
-    novo->prox = L->inicio;
-        //Verifica se coloca ele no inicio
-        if (L->inicio ==  NULL)
-        {
-            //Insere no inicio, por ser o primeiro nó
-            L->inicio = novo;
-        }
-        //Caso não insere depois do primeiro valor adicionado
-        else{
-            L->fim->prox = novo;
-        }
-        L->fim = novo;
-        //Incrementa o tamanho da lista
-        tamanho ++;
-        return 1;
+    else{
+         printf("Contem elementos");
+        return false;
+    }
 }
 
+//Inserir
+bool InserirLDE(LDE *Lista, float valor){
+    NoLDE *novo = (NoLDE*)malloc(sizeof(NoLDE));
+    if (novo == NULL)
+    {
+        printf("Erro");
+        return false;
+    }
+    
+    novo->valor = valor;
+    novo->prox = NULL;
 
-//Inserção ordenada
-
-
-
+    //Se for o primeiro elemento a ser inserido
+    if (Lista->inicio == NULL)
+    {
+        Lista->inicio = novo;
+        Lista->fim = novo;
+    }
+    else{
+        Lista->fim->prox = novo;
+        Lista->fim = novo;
+    }  
+    Lista->tamanho++;
+    return true;
+}
 
 //Remoção
-int removerLDE (LDE *L, Valor valor, int tamanho){
-    if (L->tamanho == 0)
-    {
-        printf("Lista vazia, não é possível fazer a operação \n");
-        return 0;
-    }
-
-    NoLDE *aux = L -> inicio;
-
+bool RemoverLDE(LDE *Lista, float valor){
+    NoLDE *aux = Lista->inicio;
     NoLDE *ant = NULL;
-
-
-    //Procurar nó
-    while (aux != NULL)
+    if (Lista->inicio == NULL)
     {
-        /* code */
+        printf("Lista vazia, operação impossivel");
+        return false;
     }
     
-
-
-    
-    
-}
-
-
-
-
-
-//Busca
-bool buscaLDE(LDE *L, Valor valor){
-    NoLDE *aux = L->inicio;
-    while (aux != NULL)
+    while (aux != NULL && aux->valor != valor)
     {
-        if (aux->valor.INT == valor.INT && aux->valor.FLOAT == valor.FLOAT && aux->valor.CHAR == valor.CHAR)
-        {
-            return true;
-        }
+        ant = aux;
         aux = aux->prox;
     }
-    return false;
+
+    if (aux == NULL)
+    {
+        printf("Não encontrado");
+        return true;
+    }
+    if (ant == NULL)
+    {
+        Lista->inicio = aux->prox;
+    }
+    else
+    {
+        ant->prox = aux->prox;
+    }
+    free(aux);
+    Lista->tamanho--;
+    return true;
 }
 
 
-
-
-//Impressão
-void impressaoLDE(LDE *L){
-    typedef enum tipo_valor { INT, FLOAT, CHAR } TipoValor;
-    if (L->tamanho == 0)
+//Imprimir
+//Imprimir
+void ImprimirLDE(LDE *Lista){
+    NoLDE *aux = Lista->inicio;
+    if (aux == NULL)
     {
-        printf("A lista está vazia");
+        printf("\nLista Vazia\n");
+        return;
     }
-    
-    NoLDE *aux;
-
-    for (aux = L->inicio; aux != NULL; aux = aux->prox)
+    printf("Imprimindo:\n");
+    while (aux != NULL)
     {
-        TipoValor tipo = INT;
-
-        if (aux->valor.INT) {
-            tipo = INT;
-        } else if (aux->valor.FLOAT) {
-            tipo = FLOAT;
-        } else if (aux->valor.CHAR) {
-            tipo = CHAR;
-        }
-
-        switch (tipo)
-        {
-        case INT:
-            printf("%d ", aux->valor.INT);
-            break;
-        case FLOAT:
-            printf("%.2f ", aux->valor.FLOAT);
-            break;
-        case CHAR:
-            printf("%c ", aux->valor.CHAR);
-            break;
-        
-        default:
-            break;
-        }
-        
+        printf("%lf \n", aux->valor);
+        aux = aux->prox;
     }
 }
-
-
-
-//Ordenação
-
-
-//Tamanho
-int tamanhoLDE(LDE *L, int tamanho){
-    return tamanho;
-}
-
-
 
 
 int main(int argc, char const *argv[])
 {
-    
+    LDE Lista;
+    InicializarLDE(&Lista);
+    InserirLDE(&Lista, 8);
+    InserirLDE(&Lista, 78);
+    InserirLDE(&Lista, 12);
+    InserirLDE(&Lista, 30);
+    RemoverLDE(&Lista, 30);
+    ImprimirLDE(&Lista);
+
+
     return 0;
 }

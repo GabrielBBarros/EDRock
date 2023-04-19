@@ -3,16 +3,9 @@
 #include <stdbool.h>
 #define MAX 100
 
-typedef union valor
-{
-    int INT;
-    float FLOAT;
-    char CHAR;
-}Valor;
-
 typedef struct fe
 {
-    Valor vFila[MAX];
+    double vFila[MAX];
     int inicio;
     int fim;
     int tamanho;
@@ -21,6 +14,7 @@ typedef struct fe
 void InicioalizarFE(FE *Fila){
     Fila->inicio = -1;
     Fila->fim = -1;
+    Fila->tamanho = 0;
 }
 
 bool VaziaFE(FE *Fila){
@@ -45,7 +39,7 @@ bool CheiaFE(FE *Fila){
     }  
 }
 
-bool InserirFE(FE *Fila, Valor valor){
+bool InserirFE(FE *Fila, double valor){
     if (Fila->fim == MAX) {
         return false; // Fila cheia, não é possível inserir
     }
@@ -57,13 +51,13 @@ bool InserirFE(FE *Fila, Valor valor){
     }
 }
 
-bool RemoverFE(FE *Fila, Valor *valor){
+bool RemoverFE(FE *Fila, double valor){
     if (Fila->inicio == Fila->fim)
     {
         return false;
     }
     else{
-        *valor = Fila->vFila[Fila->inicio];
+        valor = Fila->vFila[Fila->inicio];
         Fila->inicio++;  
     }
     Fila->tamanho--;
@@ -77,38 +71,51 @@ void ImprimirFE(FE *Fila){
     }
     else
     {
+        printf("\nImprimindo \n");
         for (int i = Fila->inicio; i < Fila->fim; i++)
         {
-            if (Fila->vFila[i].INT) {
-                printf("%d ", Fila->vFila[i].INT);
-            } else if (Fila->vFila[i].FLOAT) {
-                printf("%f ", Fila->vFila[i].FLOAT);
-            } else {
-                printf("%c ", Fila->vFila[i].CHAR);
-            }
+            printf("%lf \n", Fila->vFila[i]);
         }
     }
 }
 
-
-bool BuscarFE(FE *Fila, Valor valor){
+//Buscar valor
+double BuscarValorFE(FE *Fila, double valor){
     if (Fila->inicio == Fila->fim)
     {
-        return false;
+        printf("Valor não encontrado \n");  
+        return -1;
     }
 
         for (int i = Fila->inicio; i < Fila->fim; i++)
         {
-            if (Fila->vFila[i].INT == valor.INT || Fila->vFila[i].FLOAT == valor.FLOAT || Fila->vFila[i].CHAR == valor.CHAR)
+            if (Fila->vFila[i] == valor)
             {
-                return true;
+                printf("Encontrado: %lf\n", valor);
+                return valor;
             }
             
-        }      
-    return false;
+        }   
+    printf("Valor não encontrado \n");  
+    return -1;
 }
 
+//Buscar Posição
 
-int TamanhoFE(FE *Fila){
-    return Fila->tamanho;
+
+
+
+int main(int argc, char const *argv[])
+{
+    FE Fila;
+    InicioalizarFE(&Fila);
+    InserirFE(&Fila, 5);
+    InserirFE(&Fila, 8);
+    InserirFE(&Fila, 69);
+    //RemoverFE(&Fila, 5);
+    BuscarValorFE(&Fila, 5);
+    BuscarFE(&Fila, 8);
+    ImprimirFE(&Fila);
+
+    return 0;
 }

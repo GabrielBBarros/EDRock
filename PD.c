@@ -2,16 +2,11 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-typedef union valor
-{
-    int INT;
-    float FLOAT;
-    char CHAR;
-}Valor;
+
 
 typedef struct noPD
 {
-    Valor valor;
+    double valor;
     struct noPD *prox;
 }NoPD;
 
@@ -38,7 +33,7 @@ bool VaziaPD(PD*Pilha){
 }
 
 //Push
-bool PushPD(PD *Pilha, Valor valor){
+bool PushPD(PD *Pilha, double valor){
     NoPD *novo = (NoPD*)malloc(sizeof(NoPD));
     novo->valor = valor;
     if (Pilha->topo == NULL)
@@ -54,60 +49,85 @@ bool PushPD(PD *Pilha, Valor valor){
 }
 
 //Pop
-bool PopPD(PD *Pilha, Valor *valor){
-    if (Pilha->topo==NULL)
+bool PopPD(PD *Pilha){
+    if (Pilha->topo == NULL)
     {
+        printf("Pilha vazia\n");
         return false;
     }
+
     NoPD *aux = Pilha->topo;
-    *valor = aux->valor;
     Pilha->topo = aux->prox;
+    double valor = aux->valor;
     free(aux);
     Pilha->tamanho--;
-    return true;  
+    printf("Desempilhou: %lf", valor);
+    return true;
 }
+
 
 //Impressão
 void ImprimirPD(PD *Pilha){
     if (Pilha->topo == NULL)
     {
-        printf("Pilha vazia");
+        printf("Pilha vazia \n");
     }
     NoPD *aux = Pilha->topo;
-    while (aux !=NULL)
+    printf("\nImprimindo:\n");
+    while (aux != NULL)
     {
-        if (aux->valor.INT) {
-            printf("%d ", aux->valor.INT);
-        }
-        else if (aux->valor.FLOAT) {
-            printf("%f ", aux->valor.FLOAT);
-        } 
-        else {
-            printf("%c ", aux->valor.CHAR);
-        }
+        printf("%lf \n", aux->valor);
         aux = aux->prox;
-
-    } 
+    }
+    
+    
 }
 
-//Busca
-int Buscar(PD *Pilha, Valor valor) {
+//Busca valor
+double BuscarValorPD(PD *Pilha, double valor) {
     int posicao = 0;
     NoPD *aux = Pilha->topo;
     while (aux != NULL) {
-        if (aux->valor.INT == valor.INT || aux->valor.FLOAT == valor.FLOAT || aux->valor.CHAR == valor.CHAR) {
-            return true;
+        if (aux->valor == valor) {
+            printf("\nEncontrado: %lf\n", valor);
+            return valor;
         }
         aux = aux->prox;
         posicao++;
     }
-    return false; // elemento não encontrado
+    return -1; 
+}
+
+//Buscar
+int BuscarPD(PD *Pilha, double valor){
+    NoPD *aux = Pilha->topo;
+    int posicao = 0;
+    while (aux != NULL) {
+        if (aux->valor == valor) {
+            printf("\nPosicao: %d\n", posicao);
+            return posicao;
+        }
+        aux = aux->prox;
+        posicao++;
+    }
+    printf("\nValor nao encontrado\n");
+    return -1;
 }
 
 
-
-//Tamanho
-int TamanhoPD(PD *Pilha){
-    return Pilha->tamanho;
+int main(int argc, char const *argv[])
+{
+    PD pilha;
+    InicializarPD(&pilha);
+    PushPD(&pilha, 89);
+    PushPD(&pilha, 2);
+    PushPD(&pilha, 3);
+    PushPD(&pilha, 4);
+    PushPD(&pilha, 5);
+    PopPD(&pilha);
+    BuscarValorPD(&pilha, 89);
+    BuscarPD(&pilha, 89);
+    ImprimirPD(&pilha);
 }
+
 
