@@ -37,8 +37,34 @@ bool VaziaLDE(LDE *Lista){
     }
 }
 
-//Inserir
-bool InserirLDE(LDE *Lista, float valor){
+//Inserir no inicio
+bool InseririnicioLDE(LDE *Lista, float valor){
+    NoLDE *novo = (NoLDE*)malloc(sizeof(NoLDE));
+    if (novo == NULL)
+    {
+        printf("Erro");
+        return false;
+    }
+    
+    novo->valor = valor;
+    novo->prox = NULL;
+
+    //Se for o primeiro elemento a ser inserido
+    if (Lista->inicio == NULL)
+    {
+        Lista->inicio = novo;
+        Lista->fim = novo;
+    }
+    else{
+        novo->prox = Lista->inicio;
+        Lista->inicio = novo;
+    }  
+    Lista->tamanho++;
+    return true;
+}
+
+//Inserir no final
+bool InserirFinalLDE(LDE *Lista, float valor){
     NoLDE *novo = (NoLDE*)malloc(sizeof(NoLDE));
     if (novo == NULL)
     {
@@ -62,6 +88,57 @@ bool InserirLDE(LDE *Lista, float valor){
     Lista->tamanho++;
     return true;
 }
+
+
+//Inserir ordenadamente
+bool InserirOrdenadamenteLDE(LDE *Lista, float valor){
+    NoLDE *novo = (NoLDE*)malloc(sizeof(NoLDE));
+    if (novo == NULL)
+    {
+        printf("Erro");
+        return false;
+    }
+    
+    novo->valor = valor;
+    novo->prox = NULL;
+
+    //Se for o primeiro elemento a ser inserido
+    if (Lista->inicio == NULL)
+    {
+        Lista->inicio = novo;
+        Lista->fim = novo;
+        Lista->tamanho++;
+    }
+    //Insere se o valor a ser inserido é menor que o primeiro
+    if (valor < Lista->inicio->valor)
+    {
+        novo->prox = Lista->inicio;
+        Lista->inicio = novo;
+        Lista->tamanho++;
+        return true;
+    }
+    //Apartir do segundo nó insere no lugar certo
+    NoLDE *atual = Lista->inicio->prox;
+    NoLDE *ant = Lista->inicio;
+    while (atual != NULL && valor > atual->valor)
+    {
+        ant = atual;
+        atual = atual->prox;
+    }
+
+    novo->prox = atual;
+    ant->prox = novo;
+    
+    //Caso esse novo nó for o fim, atualiza ele
+    if (atual == NULL)
+    {
+        Lista->fim = novo;
+    }
+    Lista->tamanho++;
+    return true; 
+}
+
+
 
 //Remoção
 bool RemoverLDE(LDE *Lista, float valor){
@@ -97,8 +174,42 @@ bool RemoverLDE(LDE *Lista, float valor){
     return true;
 }
 
+//Buscar valor
+bool BuscarValorLDE(LDE *Lista, double valor){
+    NoLDE *aux = Lista->inicio;
+    while (aux!=NULL)
+    {
+        if (aux->valor == valor)
+        {
+            printf("Achado: %lf \n",valor);
+            return true;
+        }
+        aux = aux->prox;
+    }
+    printf("Valor nao encontrado \n");
+    return false;  
+}
 
-//Imprimir
+//Buscar posição
+int BuscarPosicaoValorLDE(LDE *Lista, double valor){
+    NoLDE *aux = Lista->inicio;
+    int posicao = 1;
+
+    while (aux !=NULL)
+    {
+        if (aux->valor == valor)
+        {
+            printf("Posicao: %lf \n",posicao);
+             return posicao;
+        }
+        aux = aux->prox;
+        posicao++;    
+    }
+    //Valor não achado
+    printf("Valor não encontrado \n");
+    return -1;
+}
+
 //Imprimir
 void ImprimirLDE(LDE *Lista){
     NoLDE *aux = Lista->inicio;
@@ -120,10 +231,10 @@ int main(int argc, char const *argv[])
 {
     LDE Lista;
     InicializarLDE(&Lista);
-    InserirLDE(&Lista, 8);
-    InserirLDE(&Lista, 78);
-    InserirLDE(&Lista, 12);
-    InserirLDE(&Lista, 30);
+    InseririnicioLDE(&Lista, 8);
+    InseririnicioLDE(&Lista, 78);
+    InseririnicioLDE(&Lista, 12);
+    InseririnicioLDE(&Lista, 30);
     RemoverLDE(&Lista, 30);
     ImprimirLDE(&Lista);
 
