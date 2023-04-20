@@ -40,7 +40,7 @@ bool InserirFrenteDD(DD *Deque, double valor){
     NoDD *novo = (NoDD *)malloc(sizeof(NoDD));
     if (novo == NULL)
     {
-        printf("Erro de aloca√ß√£o \n");
+        printf("Erro de alocaÁ„o \n");
         return false;
     }
     novo->valor = valor;
@@ -60,12 +60,12 @@ bool InserirFrenteDD(DD *Deque, double valor){
     return true;
 }
 
-// Inserir atr√°s
+// Inserir atr·s
 bool InserirAtrasDD(DD *Deque, double valor){
     NoDD *novo = (NoDD *)malloc(sizeof(NoDD));
     if (novo == NULL)
     {
-        printf("Erro de aloca√ß√£o \n");
+        printf("Erro de alocaÁ„o \n");
         return false;
     }
     novo->valor = valor;
@@ -107,7 +107,7 @@ bool RemoverFrenteDD(DD *Deque, double* valor){
 
     free(aux);
     Deque->tamanho--;
-    return true;  
+    return true;
 }
 
 //Remover atras
@@ -131,7 +131,7 @@ bool RemoverAtrasDD(DD *Deque, double* valor){
 
     free(aux);
     Deque->tamanho--;
-    return true;  
+    return true;
 }
 
 
@@ -148,7 +148,7 @@ void ImprimirDD(DD *Deque){
     {
         printf("%lf \n", aux->valor);
         aux = aux->prox;
-    } 
+    }
 }
 
 //Busca valor
@@ -163,17 +163,17 @@ bool BuscaValor(DD *Deque, double valor){
     {
         if (aux->valor == valor)
         {
-            printf("Encontrado: %lf \n");
+            printf("Encontrado: %lf \n", valor);
             return true;
         }
         aux = aux->prox;
-        
+
     }
-    printf("Valor n√£o encontrado \n");
+    printf("Valor nao encontrado \n");
     return false;
 }
 
-//Busca valor
+//Busca posiÁ„o
 bool BuscaPosicao(DD *Deque, double valor){
     if (Deque == NULL)
     {
@@ -182,18 +182,17 @@ bool BuscaPosicao(DD *Deque, double valor){
     }
     NoDD *aux = Deque->frente;
     int i = 0;
-    do
-    {
+    while (aux != NULL){
         if (aux->valor == valor)
         {
-            printf("Encontrado, posicao: %ln \n", i);
+            printf("Encontrado, posicao: %d \n", i);
+            return true;
         }
         aux =aux->prox;
         i++;
-        
-    } while (aux != NULL);
-    
-    printf("Valor n√£o encontrado \n");
+    }
+
+    printf("Valor nao encontrado \n");
     return false;
 }
 
@@ -211,8 +210,9 @@ int main(int argc, char const *argv[])
     InserirFrenteDD(&Deque, 20);
     InserirAtrasDD(&Deque, 30);
     InserirAtrasDD(&Deque, 40);
-    RemoverAtrasDD(&Deque, 10);
-    RemoverFrenteDD(&Deque, 40);
+    double valor = 10;
+    RemoverAtrasDD(&Deque, &valor);
+    //RemoverFrenteDD(&Deque, &valor);
     ImprimirDD(&Deque);
     BuscaValor(&Deque, 20);
     BuscaPosicao(&Deque, 30);
