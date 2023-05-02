@@ -21,6 +21,8 @@ Listas
 	Lista Dinâmica Encadeada (LDE);
 	Lista Dinâmica Duplamente Encadeada (LDDE);
 	Implementação da String Dinâmica.
+	Lista Generalizada
+	Lista Cruzada
 
 Pilha
 
@@ -71,8 +73,8 @@ Listas
 
 	Inicialização (void);
 	Inserção simples (bool) -> (Inserir no inicio) e (Inserir no fim);
-	Inserção ordenada (bool);
-	Remoção (bool);
+	Inserção ordenada (bool); (Inserir Ordenado no Inicio) e (Inserir Ordenado no Fim); 
+	Remoção (bool); -> Remoção do inicio e Remoção do fim da lista;
 	Busca (int);
 	BuscaValor (double);
 	Impressão (void);
